@@ -34,6 +34,7 @@ Envoyer pulls code directly from your connected repository onto your server, so 
 
 ## Deployment Hooks
 This is where the magic happens! Envoyer gives you the ability to run deployment hooks before and after various stages of the deployment process, which are:
+
  1. Clone New Release
  2. Install Composer dependencies
  3. Activate New Release
