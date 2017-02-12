@@ -114,6 +114,6 @@ Sessions are also symlinked in the same way, using the shared folder. Note: If y
 From: `var/session` to: `shared/var/session`
 
 ## Lift off!
-If everything goes to plan, your code will be pushed to the server, all deployment hooks will run, and a symlink will be created from the "current" folder on your server the this release. One great feature of Envoyer is that if anything fails during the deployment, the whole deployment will fail, and your currently deployed code will reamin in tact.
+If everything goes to plan, your code will be pushed to the server, all deployment hooks will run, and a symlink will be created from the "current" folder on your server to this release. One great feature of Envoyer is that if anything fails during the deployment, the whole deployment will fail, and your currently deployed code will reamin in tact.
 
 Alright, that's enough from me. Enjoy!
