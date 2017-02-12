@@ -18,7 +18,7 @@ So firstly, a quick overview of how Envoyer handles zero downtime deployments. O
 In order for everything to work, you'll need to set the document root on your server to point to this current folder.
 
 _Note:_ If you're using cPanel (like me), cPanel doesn't like the document root to be changed. To get around this I simply created a `.htaccess` file at the server root, to rewrite the base URL as follows:
-{% highlight powershell linenos %}
+{% highlight apache linenos %}
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^mydomain.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.mydomain.com$
