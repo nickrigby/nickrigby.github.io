@@ -3,6 +3,7 @@ layout: post
 title:  "Deploying Magento 2 with Composer and Envoyer"
 date:   2017-02-11 20:43:45 -0400
 categories: magento deployment envoyer
+excerpt: In this post, I'll show you how to deploy Magento 2 the right way, using Composer and Envoyer, and zero(ish) downtime.
 comments: true
 ---
 Magento 2 offers significant improvements over Magento 1 in many areas, with one particular highlight being the ability to manage your code with [composer](https://getcomposer.org). If you're not familiar with composer, it's a dependency manager for PHP, meaning all of your code dependencies can be defined in a single JSON file, which results in a much lighter footprint when it comes to version control.
@@ -10,6 +11,20 @@ Magento 2 offers significant improvements over Magento 1 in many areas, with one
 The caveat is that deploying sites managed with composer requires a little more configuration on the code deployment side, since we need to resolve the composer dependencies at deploy time (unless you're versioning the vendor folder, which you really shouldn't).
 
 Being a huge fan of [Laravel](https://laravel.com), I found [Envoyer](https://envoyer.io), a zero downtime deployment tool for PHP applications. Since Magento 2 is a PHP-based application — and I'm really into composer — I decided to give it a go.
+
+## Zero downtime deployments with Envoyer
+So firstly, a quick overview of how Envoyer handles zero downtime deployments. On the face of it, it's actually quite simple — symlinks. Each time you deploy code with Envoyer, it creates a new folder on the server in a "releases" folder. The name of the folder is timestamped with the time of the deployment to keep it unique e.g. `releases/20170128235240`. Once a deployment is successful, Envoyer creates a "current" folder symlink to that newly created releases folder.
+
+In order for everything to work, you'll need to set the document root on your server to point to this current folder.
+
+_Note:_ If you're using cPanel (like me), cPanel doesn't like the document root to be changed. To get around this I simply created a `.htaccess` file at the server root, to rewrite the base URL as follows:
+{% highlight sh linenos %}
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^mydomain.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.mydomain.com$
+RewriteCond %{REQUEST_URI} !current/
+RewriteRule (.*) /current/$1 [L]
+{% endhighlight %}
 
 ## GIT Repository
 In order to use Envoyer, your code must first be versioned with GIT, with a remote repository through [Bitbucket](http://bitbucket.org/), [GitHub](https://github.com) or [GitLab](https://gitlab.com). I happen to be using BitBucket, but it really doesn't matter since Envoyer gives you an easy interface to connect any one of them.
@@ -49,7 +64,7 @@ cd {% raw %}{{release}}{% endraw %}
 mv vendor vendor_original
 {% endhighlight %}
 
-Note: the `{% raw %}{{release}}{% endraw %}` placeholder on line 1. This is a smart variable in Envoyer that gives the path to the current release that is being deployed. Pretty sweet!
+_Note_: the `{% raw %}{{release}}{% endraw %}` placeholder on line 1. This is a smart variable in Envoyer that gives the path to the current release that is being deployed. Pretty sweet!
 
 ### 2. Install Composer Depencendies (After)
 Little bit of cleanup to do here: Move the `.htaccess` folder from `vendor_original` into the newly created `vendor` folder:
@@ -84,7 +99,7 @@ php bin/magento maintenance:disable
 {% endhighlight %}
 
  - Line 1: Nothing new here, we simply move into the folder for the code that is being deployed.
- - Line 2: Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. Note: You'll see that I am specifiying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
+ - Line 2: Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. _Note:_ You'll see that I am specifiying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
  - Line 3: Again, using the Magento CLI, we setup and [compile all Dependency Injections](http://devdocs.magento.com/guides/v2.0/config-guide/cli/config-cli-subcommands-compiler.html).
  - Line 4: Enable Maintenance mode. Whaaaaaaaaat!? I thought you said this was zero downtime? Okay, it really should be, but it is important to do this, and here's why. When you run the `setup:upgrade` command on line 5, Magento is going to update the `setup_module` table in the database. Since this deployment has not been activated yet, we have a moment where we could have a potential mismatch between the codebase and what is in this table, which could cause an error. Essentially, this step just gives us an extra safety net.
  - Line 5: Run the upgrade script to update any module schemas in the database.
@@ -109,7 +124,7 @@ Prior to deployments with Envoyer, I created a shared folder on the server and m
 From: `pub/media/catalog` to: `shared/pub/media/catalog`
 
 ### Sessions
-Sessions are also symlinked in the same way, using the shared folder. Note: If you are using the database for sessions, you can ignore this step.
+Sessions are also symlinked in the same way, using the shared folder. _Note:_ If you are using the database for sessions, you can ignore this step.
 
 From: `var/session` to: `shared/var/session`
 
