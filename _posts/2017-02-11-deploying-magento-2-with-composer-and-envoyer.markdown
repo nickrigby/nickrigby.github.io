@@ -40,25 +40,23 @@ This is where the magic happens! Envoyer gives you the ability to run deployment
  3. Activate New Release
  4. Purge Old Releases
 
-I'll go over these now, which will also outline the zero downtime part of Envoyer.
-
 ### 1. Clone New Release
 Each time you deploy code, Envoyer clones the code repository into a new folder on your server, keeping your current production code in tact.
 
 ### 2. Install Composer dependencies
-This part is fairly explanatory. Envoyer automatically looks for your composer.json file, and runs `composer install`. For your first ever deploy this can take a few minutes — since Magento 2 has a lot of dependencies — but subsequent deployments will pull dependencies from cache, meaning they resolve in 10-20 seconds (depending on your server).
+This part is fairly explanatory. Envoyer automatically looks for your `composer.json` file, and runs `composer install`. For your first ever deploy this can take a few minutes — since Magento 2 has a lot of dependencies — but subsequent deployments will pull dependencies from cache, meaning they resolve in 10-20 seconds (depending on your server).
 
 ### 3. Activate New Release
 Activating a new release means the current codebase symlink is updated to point at the new release directory.
 
 ### 4. Purge Old Releases
-Envoyer keeps a copy of the last five or so releases, so this part just cleans up some of the older releases.
+Envoyer keeps a copy of the last five or so releases, so this part just cleans up some of the older releases by removing them.
 
 ## Configuring Deployments hooks for Magento 2
 Alright, so now we know what Envoyer can do, it's time to create specific deployment hooks for Magento 2. Here's the hooks I have:
 
 ### 1. Install Composer Dependencies (Before)
-Envoyer will skip composer dependencies if a vendor directory already exists, or if the `composer.json` file is missing. In Magento 2, the vendor folder does exist, and is under version control, since it contains a `.htaccess` file. In order for composer to run, we need to temporarily rename the vendor folder:
+Envoyer will skip composer dependencies if a vendor directory already exists, or if the `composer.json` file is missing. In Magento 2, the vendor folder does exist, and is under version control since it contains a `.htaccess` file. In order for composer to run, we need to temporarily rename the vendor folder:
 
 {% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
@@ -77,18 +75,20 @@ rm -R vendor_original
 {% endhighlight %}
 
 ### 3. Activate New Release (Before)
-We have a number of things to do here, before we can activate the release
+We have a number of things to do here, before we can activate the release.
 
-#### Add env.php and config.php files
-These files live in the `app/etc` folder, and contain environment specific code. The `env.php` file includes your encryption key, backend URL and database credentials, and the `config.php` file contains module information. These files shouldn't be versioned, since they are specific to an environment, so I created a shared folder on the server, and uploaded the production files so they could be copied on deployment.
+#### Add `env.php` and `config.php` files
+These files live in the `app/etc` folder of Magento 2, and contain environment specific code. The `env.php` file includes your encryption key, backend URL and database credentials, wheras `config.php` file contains module information. These files shouldn't be versioned, since they are specific to an environment, so I created a shared folder on the server, and uploaded the production files so they could be copied on deployment.
 
 {% highlight powershell linenos %}
 cp {% raw %}{{project}}{% endraw %}/shared/app/etc/env.php {% raw %}{{release}}{% endraw %}/app/etc/env.php
 cp {% raw %}{{project}}{% endraw %}/shared/app/etc/config.php {% raw %}{{release}}{% endraw %}/app/etc/config.php
 {% endhighlight %}
 
+_Note:_ The `{% raw %}{{project}}{% endraw %}` placeholder gives the path to your project root, which is configured within Envoyer.
+
 #### Magento setup
-This is the most complicated step, and the step that will most likely take the longest in the deployment. I'll go through each part of the code in more detail below.
+This is the most complicated step, and the step that will most likely take the longest in the deployment.
 
 {% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
@@ -99,12 +99,12 @@ php bin/magento setup:upgrade --keep-generated
 php bin/magento maintenance:disable
 {% endhighlight %}
 
- - Line 1: Nothing new here, we simply move into the folder for the code that is being deployed.
- - Line 2: Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. _Note:_ You'll see that I am specifiying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
- - Line 3: Again, using the Magento CLI, we setup and [compile all Dependency Injections](http://devdocs.magento.com/guides/v2.0/config-guide/cli/config-cli-subcommands-compiler.html).
- - Line 4: Enable Maintenance mode. Whaaaaaaaaat!? I thought you said this was zero downtime? Okay, it really should be, but it is important to do this, and here's why. When you run the `setup:upgrade` command on line 5, Magento is going to update the `setup_module` table in the database. Since this deployment has not been activated yet, we have a moment where we could have a potential mismatch between the codebase and what is in this table, which could cause an error. Essentially, this step just gives us an extra safety net.
- - Line 5: Run the upgrade script to update any module schemas in the database.
- - Line 6: Disable maintenance mode.
+ - **Line 1:** Nothing new here, we simply move into the folder for the code that is being deployed.
+ - **Line 2:** Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. _Note:_ You'll see that I am specifiying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
+ - **Line 3:** Again, using the Magento CLI, we setup and [compile all Dependency Injections](http://devdocs.magento.com/guides/v2.0/config-guide/cli/config-cli-subcommands-compiler.html).
+ - **Line 4:** Enable Maintenance mode. Whaaaaaaaaat!? I thought you said this was zero downtime? Okay, it really should be, but it is important to do this, and here's why. When you run the `setup:upgrade` command on line 5, Magento is going to update the `setup_module` table in the database. Since this deployment has not been activated yet, we have a moment where we could have a potential mismatch between the code and what is in this table, which could cause an error. Essentially, this step just gives us an extra safety net.
+ - **Line 5:** Run the upgrade script to update any module schemas in the database.
+ - **Line 6:** Disable maintenance mode.
 
 ### 3. Activate New Release (After)
 Our deployed code should now be live! One last step — clearing the Magento cache.
@@ -115,9 +115,9 @@ php bin/magento cache:flush
 {% endhighlight %}
 
 ## Linked folders
-Almost there, but there's one (very important!) final step. Since we are deploying and resolving our dependencies on each deployment, what happens to user generated files (think product images), and sessions (if you're storing them in the file system). It's a great question, and fortunately Envoyer has a solution — linked folders!
+Almost there, but there's one (very important!) final step. Since we are deploying and resolving our dependencies on each deployment, what happens to user generated files (think product images), and sessions (if you're storing them in the file system)? It's a great question, and fortunately Envoyer has a solution — linked folders!
 
-A linked folder allows you to easily create a symlink from a folder in your release to more permanent files on your server. Within the Envoyer interface, linked folders are managed through the "Deployment Hooks" tab, by clicking on the "Manage Linked Folders" button. In my case, I store sessions in the file system so I have two linked folder created:
+A linked folder allows you to easily create a symlink from a folder in your release to more permanent files on your server. Within the Envoyer interface, linked folders are managed through the "Deployment Hooks" tab, by clicking on the "Manage Linked Folders" button. In my case, I store sessions in the file system so I created two linked folders.
 
 ### Media Catalog Folder
 Prior to deployments with Envoyer, I created a shared folder on the server and moved the entire catalog folder to it. On each deployment a symlink is then created from the catalog folder to the shared folder.
@@ -130,6 +130,6 @@ Sessions are also symlinked in the same way, using the shared folder. _Note:_ If
 From: `var/session` to: `shared/var/session`
 
 ## Lift off!
-If everything goes to plan, your code will be pushed to the server, all deployment hooks will run, and a symlink will be created from the "current" folder on your server to this release. One great feature of Envoyer is that if anything fails during the deployment, the whole deployment will fail, and your currently deployed code will reamin in tact.
+If everything goes to plan, your code will be pushed to the server, all deployment hooks will run, and a symlink will be created from the "current" folder on your server to this release. If anything fails during the deployment, the whole deployment will fail, and your currently deployed code will remain in tact.
 
 Alright, that's enough from me. Enjoy!
