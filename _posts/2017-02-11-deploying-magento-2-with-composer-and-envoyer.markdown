@@ -18,7 +18,7 @@ So firstly, a quick overview of how Envoyer handles zero downtime deployments. O
 In order for everything to work, you'll need to set the document root on your server to point to this current folder.
 
 _Note:_ If you're using cPanel (like me), cPanel doesn't like the document root to be changed. To get around this I simply created a `.htaccess` file at the server root, to rewrite the base URL as follows:
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^mydomain.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.mydomain.com$
@@ -59,7 +59,7 @@ Alright, so now we know what Envoyer can do, it's time to create specific deploy
 ### 1. Install Composer Dependencies (Before)
 Envoyer will skip composer dependencies if a vendor directory already exists, or if the `composer.json` file is missing. In Magento 2, the vendor folder does exist, and is under version control, since it contains a `.htaccess` file. In order for composer to run, we need to temporarily rename the vendor folder:
 
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
 mv vendor vendor_original
 {% endhighlight %}
@@ -69,7 +69,7 @@ _Note_: the `{% raw %}{{release}}{% endraw %}` placeholder on line 1. This is a 
 ### 2. Install Composer Depencendies (After)
 Little bit of cleanup to do here: Move the `.htaccess` folder from `vendor_original` into the newly created `vendor` folder:
 
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
 cp vendor_original/.htaccess vendor/
 rm -R vendor_original
@@ -81,7 +81,7 @@ We have a number of things to do here, before we can activate the release
 #### Add env.php and config.php files
 These files live in the `app/etc` folder, and contain environment specific code. The `env.php` file includes your encryption key, backend URL and database credentials, and the `config.php` file contains module information. These files shouldn't be versioned, since they are specific to an environment, so I created a shared folder on the server, and uploaded the production files so they could be copied on deployment.
 
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 cp {% raw %}{{project}}{% endraw %}/shared/app/etc/env.php {% raw %}{{release}}{% endraw %}/app/etc/env.php
 cp {% raw %}{{project}}{% endraw %}/shared/app/etc/config.php {% raw %}{{release}}{% endraw %}/app/etc/config.php
 {% endhighlight %}
@@ -89,7 +89,7 @@ cp {% raw %}{{project}}{% endraw %}/shared/app/etc/config.php {% raw %}{{release
 #### Magento setup
 This is the most complicated step, and the step that will most likely take the longest in the deployment. I'll go through each part of the code in more detail below.
 
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
 php bin/magento setup:static-content:deploy en_US en_GB
 php bin/magento setup:di:compile
@@ -108,7 +108,7 @@ php bin/magento maintenance:disable
 ### 3. Activate New Release (After)
 Our deployed code should now be live! One last step — clearing the Magento cache.
 
-{% highlight sh linenos %}
+{% highlight powershell linenos %}
 cd {% raw %}{{release}}{% endraw %}
 php bin/magento cache:flush
 {% endhighlight %}
