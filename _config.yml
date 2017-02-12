@@ -24,6 +24,7 @@ twitter_username: nick_rigby
 github_username:  nickrigby
 disqus:
   shortname: nickrigby
+google_analytics: UA-57099-3
 
 # Build settings
 markdown: kramdown
