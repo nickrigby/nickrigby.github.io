@@ -43,6 +43,7 @@ Take a look at [my Gemfile](https://github.com/nickrigby/nickrigby.github.io/blo
 
 {% highlight powershell linenos %}
 gem update bundler
+bundle update
 bundle install
 bundle update github-pages
 {% endhighlight %}
