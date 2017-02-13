@@ -8,19 +8,19 @@ tags: [github pages, jekyll]
 
 By default, Github Pages have a `.github.io` domain, but wouldn't it be cool to use your own custom domain? Well my friend, it's your lucky day.
 
-## Adding the custom domain in Github
-Browse to your repository on Github, and go to the "settings" tab. Scroll about half way down the page until you see the "custom domain" box (it's within the Github Pages section).
+## Adding a custom domain in Github
+Browse to your repository on Github, and go to the "settings" tab. Scroll about half way down the page until you see the "custom domain" box (within the Github Pages section).
 
-Add your custom domain to the box (sans protocol), and hit save. Done!
+Add your custom domain to the box and hit save. We're Done!
 
 _Note:_ Github will automatically create a new file in your repository called `CNAME` which includes a single line contianing your custom domain.
  
-## Configuring the DNS
+## Configuring DNS
 We've told Github Pages about our custom domain, but now we need to configure the DNS so it points to our Github Pages site. Github Pages, rather conveniently, offers a [number of different ways to configure the DNS](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). I'm going to continue with the [A record method](https://help.github.com/articles/setting-up-an-apex-domain/).
 
 Using the DNS configuration manager for your domain, add two A records as follows:
 
-{% highlight powershell %}
+{% highlight plaintext %}
 Host: @
 Points to: 192.30.252.153
 {% endhighlight %}
@@ -29,7 +29,7 @@ Host: @
 Points to: 192.30.252.154
 {% endhighlight %}
 
-_Note:_ Because DNS can take some time to propagate, you may need to wait some time until the world can view your site from your domain. If you're on a Mac, you can [flush your DNS cache](https://www.igeeksblog.com/how-to-flush-dns-in-mac-os-x/) which should allow _you_ to see the changes straight away.
+_Note:_ Because DNS can take some time to propagate, there may be a delay until the world can view your site using your domain. If you're on a Mac, you can [flush your DNS cache](https://www.igeeksblog.com/how-to-flush-dns-in-mac-os-x/) which should allow _you_ to see the changes straight away.
 
 ## Configuring Jekyll
 Almost there. Now we need to instruct Jekyll to use your custom domain too. Thankfully, it only requires one simple change to your `_config.yml` file. Open the file and change the url key to your new domain:
@@ -41,7 +41,7 @@ url: "http://yourdomain.com"
 Push your changes to Github and you should now see your Github Pages site at your domain. Bam!
 
 ## Bonus level: Enabling SSL
-If you want to use SSL with your domain – which is highly recomended – this step is for you. Github Pages do not support SSL with custom domains, but there is a way — [Cloudflare](https://www.cloudflare.com). I won't go into detail about what Cloudflare does, all you need to know is it allows you to use SSL with your Github Pages domain — for free.
+If you want to use SSL with your domain – which is highly recomended – read on. Github Pages do not support SSL with custom domains, but there is a way — [Cloudflare](https://www.cloudflare.com). I won't go into detail about what Cloudflare does, all you need to know is it allows you to use SSL with your Github Pages domain — for free.
 
  1. Sign up for a Cloudflare account (if you don't already have one).
  2. Enter your domain name to initiate a scan of the DNS records.
