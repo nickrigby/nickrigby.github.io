@@ -17,7 +17,7 @@ Head over to the [GitHub Pages](https://pages.github.com) home page for detailed
 
 Once you have followed the above steps you should be able to browse to `yourusername.github.io` in a web browser and see your shiny new website. My site is [nickrigby.github.io](https://nickrigby.github.io).
 
-You can also verify that everything is working correctly if you open the "settings" tab in your repository in Github. About half way down the page you should see the Github Pages section, where you can administer additional options. You'll notice that one of the options is "custom domain", which I'll come to later in this post.
+You can also verify that everything is working correctly if you open the "settings" tab in your repository in Github. About half way down the page you should see the Github Pages section, where you can administer additional options. You'll notice that one of the options is "custom domain", which I'll cover in a later post.
 
 ## Installing Jekyll
 If you don't already have a site, you should seriously consider installing [Jekyll](https://jekyllrb.com). In their own words "Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity.". Yup, that'll do!
@@ -68,15 +68,6 @@ alias jekyll-serve="bundle exec jekyll serve --config _config.yml,_config-dev.ym
 {% endhighlight %}
 
 Now you can just run `jekyll-serve` from your project folder.
-
-### Using a custom URL
-By default, your new Github Pages site has a `.github.io` domain, but it's possible to use your own domain name.
-
- 1. In the settings tab for your repository on Github, add your custom domain in the Custom domain box about half way down the page.
- 2. Add the domain to the "url" key in your `_config.yml` file e.g. `url: "https://nickrigby.uk"`
- 3. Follow the [custom domain instructions](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) to configure the DNS depending on what kind of domain you are using.
-
- It's also possible to force SSL for a custom domain, which I'll cover in a future post.
 
 ## Launch that sucker!
 Alright, that's it! Commit all of your changes, sit back and admire your sweet new website. I hope you'll agree that using Github Pages and Jekyll makes it really easy to build a fully functional, hosted website in literal minutes. I hope you found this post useful, and if you have any questions or comments, please let me know below.
