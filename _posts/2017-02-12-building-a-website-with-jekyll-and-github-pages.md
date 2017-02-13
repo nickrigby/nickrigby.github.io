@@ -9,7 +9,7 @@ comments: true
 I've heard a lot of people talking about [GitHub Pages](https://pages.github.com) recently, so I decided to find out what all the fuss was about. If you've been hiding under rock like me, Github Pages allow you to host a website directly from a Github repository — no separate hosting account necessary. So basically, free hosting!
 
 ## Configuring Github Pages
-Headed over to the [GitHub Pages](https://pages.github.com) home page for instructions, but essentially it boils down to three simple steps:
+Head over to the [GitHub Pages](https://pages.github.com) home page for detailed instructions, but essentially it boils down to three simple steps:
 
  1. Create a new repository in your Github account named `{% raw %}<username>.github.io{% endraw %}`. _Note:_ The `{% raw %}<username>{% endraw %}` part must match your Github username exactly for it to work. You can [view my Github Pages repository](https://github.com/nickrigby/nickrigby.github.io) as an example.
  2. Clone the repository to your own machine using your favorite git client. The clone command should look something like this: `git clone https://github.com/username/username.github.io`
