@@ -3,10 +3,9 @@ layout: post
 title:  "Building a website with Jekyll and Github Pages"
 date:   2017-02-12 22:30:00 -0500
 categories: jekyll github
-excerpt: A guide to creating a website using Jekyll, and hosting with Github Pages.
 comments: true
 ---
-I've heard a lot of people talking about [GitHub Pages](https://pages.github.com) recently, so I decided to find out what the fuss was about. If you've been hiding under rock like me, Github Pages allow you to host a website directly from a Github repository — no separate hosting account necessary. It also integrates with [Jekyll](https://jekyllrb.com) — a simple, blog-aware, static site generator — so getting a website up and running couldn't be easier. Let's take a look.
+I've heard a lot of people talking about [GitHub Pages](https://pages.github.com) recently, so I decided to find out what the fuss was about. If you've been hiding under rock like me, Github Pages allow you to host a website directly from a Github repository — no separate hosting account necessary. It also integrates with [Jekyll](https://jekyllrb.com) — a simple, blog-aware, static site generator — so getting a website up and running couldn't be easier.
 
 ## Configuring Github Pages
 Head over to the [GitHub Pages](https://pages.github.com) home page for detailed instructions, but essentially it boils down to three simple steps:
