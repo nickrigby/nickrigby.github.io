@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Building a website with Jekyll and Github Pages"
-date:   2017-02-12 22:30:00 -0500
-categories: jekyll github
-comments: true
+title: "Building a website with Jekyll and Github Pages"
+date: 2017-02-12 22:30:00 -0500
+categories: jekyll
+tags: [github pages, jekyll, deployments]
+redirect_from: "/magento/deployment/envoyer/2017/02/12/deploying-magento-2-with-composer-and-envoyer.html"
 ---
 I've heard a lot of people talking about [GitHub Pages](https://pages.github.com) recently, so I decided to find out what the fuss was about. If you've been hiding under rock like me, Github Pages allow you to host a website directly from a Github repository — no separate hosting account necessary. It also integrates with [Jekyll](https://jekyllrb.com) — a simple, blog-aware, static site generator — so getting a website up and running couldn't be easier.
 

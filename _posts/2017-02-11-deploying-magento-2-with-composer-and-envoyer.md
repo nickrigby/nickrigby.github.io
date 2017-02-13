@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Deploying Magento 2 with Composer and Envoyer"
-date:   2017-02-11 20:43:45 -0500
-categories: magento deployment envoyer
+title: "Deploying Magento 2 with Composer and Envoyer"
+date: 2017-02-11 20:43:45 -0500
+categories: magento
+tags: [magento, envoyer, composer]
 excerpt: A complete guide to deploying a Magento 2 site using Composer and Envoyer, with zero(ish) downtime.
-comments: true
+redirect_from: "/jekyll/github/2017/02/13/building-a-website-with-jekyll-and-github-pages.html"
 ---
 Magento 2 offers significant improvements over Magento 1 in many areas, with one particular highlight being the ability to manage your code with [composer](https://getcomposer.org). If you're not familiar with composer, it's a dependency manager for PHP, meaning all of your code dependencies can be defined in a single JSON file, which results in a much lighter footprint when it comes to version control.
 
