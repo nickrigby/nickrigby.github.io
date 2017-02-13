@@ -17,7 +17,7 @@ Head over to the [GitHub Pages](https://pages.github.com) home page for detailed
 
 Once you have followed the above steps you should be able to browse to `yourusername.github.io` in a web browser and see your shiny new website. My site is [nickrigby.github.io](https://nickrigby.github.io).
 
-You can also verify that everything is working correctly if you open the "settings" tab in your repository in Github. About half way down the page you should see the Github Pages section, where you can administer additional options. You'll notice that one of the options is "custom domain", which I'll cover in a later post.
+You can also verify that everything is working correctly if you open the "settings" tab in your repository in Github. About half way down the page you should see the Github Pages section, where you can administer additional options. You'll notice that one of the options is "custom domain", which I covered in [another post]({{ site.baseurl }}{% post_url 2017-02-13-using-a-custom-domain-with-jekyll-and-github-pages %}).
 
 ## Installing Jekyll
 If you don't already have a site, you should seriously consider installing [Jekyll](https://jekyllrb.com). In their own words "Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity.". Yup, that'll do!
