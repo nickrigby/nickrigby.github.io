@@ -3,7 +3,7 @@ layout: post
 title:  "Building a website with Jekyll and Github Pages"
 date:   2017-02-12 22:30:00 -0500
 categories: jekyll github
-excerpt: Learn how to create a website using Jekyll, and host it for free with Github Pages.
+excerpt: A guide to creating a website using Jekyll, and hosting with Github Pages.
 comments: true
 ---
 I've heard a lot of people talking about [GitHub Pages](https://pages.github.com) recently, so I decided to find out what all the fuss was about. If you've been hiding under rock like me, Github Pages allow you to host a website directly from a Github repository — no separate hosting account necessary. So basically, free hosting!
