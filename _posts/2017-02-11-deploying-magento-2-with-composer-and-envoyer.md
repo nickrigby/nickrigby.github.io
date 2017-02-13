@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deploying Magento 2 with Composer and Envoyer"
-date:   2017-02-11 20:43:45 -0400
+date:   2017-02-11 20:43:45 -0500
 categories: magento deployment envoyer
 excerpt: In this post, I'll show you how to deploy Magento 2 the right way, using Composer and Envoyer, with zero(ish) downtime.
 comments: true
