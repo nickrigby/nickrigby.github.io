@@ -19,7 +19,7 @@ Over the years I've gained some decent link backs, so the domain itself had a de
 ## Mistaken identity
 So what if people think this guy is me? That logo man. I'm not a designer, but I'm not putting my name to that — it looks like something "Clippy" from Microsoft word would come up with. All of those hundreds of links from forums, blog posts, online magazines etc. now going straight to this guy. They'll think _I_ made that logo. I'll never be taken seriously again.
 
-## So what would you do?
+## What would you do?
 My first step was to remove any links I had control over — [Twitter](https://twitter.com/nick_rigby), [Facebook](https://www.facebook.com/nrigby), [LinkedIn](https://www.linkedin.com/in/nrigby/) and [Google Plus](https://plus.google.com/107860330650535826177). Next, I purchased myself a shiny new domain, and got a new site up and running (if you're wondering, this is it!). Lastly, I contacted some of the more popular sites that are linking to me to request a change to my new domain.
 
 What would you do? Who is the real Nick Rigby?
