@@ -36,4 +36,4 @@ This is my favourite feature. Build tools allow you to spin up a [Docker](https:
 ## Final Thoughts
 So far, I like this new workflow a lot. Having all repositories in one place (Bitbucket) makes it much easier when working within a team, and having the wiki feature for documenting projects is tremendously useful. Deployments with Deploybot are a breeze, and with the build tools feature, I finally have the fine-tuned workflow I always wanted.
 
-Would love to know what repository and deployment tools you're using. Let me know in comments below.
+Would love to know what repository and deployment tools you're using. Let me know in the comments below.
