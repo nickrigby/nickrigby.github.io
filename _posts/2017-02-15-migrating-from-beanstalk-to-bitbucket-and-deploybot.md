@@ -33,7 +33,7 @@ Atomic deployments allow you to deploy with zero downtime. Essentially, each dep
 #### Build Tools
 This is my favourite feature. Build tools allow you to spin up a [Docker](https://www.docker.com) container (on the Deploybot server) to run your build commands (Gulp, Grunt, Composer etc). You can use one of the provided Deploybot containers, or you can build your own. Having versioned compiled files in the past (purely for deployment purposes), this feature means compiled assets no longer need to be versioned, and you can avoid those annoying merge conflicts. [Read more about Build Tools in Deploybot](http://support.deploybot.com/article/791-setting-up-and-using-build-tools).
 
-## Summary
+## Final Thoughts
 So far, I like this new workflow a lot. Having all repositories in one place (Bitbucket) makes it much easier when working within a team, and having the wiki feature for documenting projects is tremendously useful. Deployments with Deploybot are a breeze, and with the build tools feature, I finally have the fine-tuned workflow I always wanted.
 
 Would love to know what repository and deployment tools you're using. Let me know in comments below.
