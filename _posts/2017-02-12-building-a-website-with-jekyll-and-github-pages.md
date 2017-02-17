@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building a website with Jekyll and Github Pages"
-date: 2017-02-12 22:30:00 -0500
+date: 2017-02-12 22:30:00
 categories: jekyll
 tags: [github pages, jekyll, deployments]
 redirect_from: "/magento/deployment/envoyer/2017/02/12/deploying-magento-2-with-composer-and-envoyer.html"

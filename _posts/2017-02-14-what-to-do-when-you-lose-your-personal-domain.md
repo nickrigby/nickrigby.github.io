@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What to do when you lose your personal domain"
-date: 2017-02-14 22:00:00 -0500
+date: 2017-02-14 22:00:00
 categories: general
 ---
 

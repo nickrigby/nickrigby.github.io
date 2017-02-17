@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Migrating from Beanstalk to Bitbucket (and Deploybot)"
-date: 2017-02-15 20:30:00 -0500
+date: 2017-02-15 20:30:00
 categories: general
 tags: [bitbucket, beanstalk, deploybot, deployments] 
 ---

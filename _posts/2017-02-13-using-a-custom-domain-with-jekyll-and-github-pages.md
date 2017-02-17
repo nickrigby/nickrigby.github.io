@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using a custom domain with Jekyll and Github Pages"
-date: 2017-02-13 16:00:00 -0500
+date: 2017-02-13 16:00:00
 categories: jekyll
 tags: [github pages, jekyll]
 ---

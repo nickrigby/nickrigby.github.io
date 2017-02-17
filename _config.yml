@@ -25,6 +25,7 @@ github_username:  nickrigby
 disqus:
   shortname: nickrigby
 google_analytics: UA-57099-3
+timezone: "America/New_York"
 
 # Build settings
 markdown: kramdown
