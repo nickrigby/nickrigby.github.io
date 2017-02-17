@@ -30,6 +30,10 @@ google_analytics: UA-57099-3
 markdown: kramdown
 theme: minima
 
+# SASS
+sass:
+  style: compressed
+
 # Gems
 gems:
   - jekyll-redirect-from
