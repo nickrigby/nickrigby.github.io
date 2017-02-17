@@ -7,6 +7,23 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
   <meta name="p:domain_verify" content="c3d807c038284685b40e3d98751ecea4"/>
 
+  <script>
+    if(sessionStorage.fonts) {
+      document.getElementsByTagName('html')[0].classList.add('wf-active');
+    }
+
+    WebFontConfig = {
+      google: {
+        families: ['Karla']
+      },
+      timeout: 2000,
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    };
+  </script>
+  <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" async></script>
+
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
