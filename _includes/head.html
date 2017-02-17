@@ -23,8 +23,13 @@
     };
   </script>
   <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" async></script>
+  <style>
+  {% capture include_to_scssify %}
+    {% include main.scss %}
+  {% endcapture %}
+  {{ include_to_scssify | scssify | strip_newlines }}
+  </style>
 
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
   
