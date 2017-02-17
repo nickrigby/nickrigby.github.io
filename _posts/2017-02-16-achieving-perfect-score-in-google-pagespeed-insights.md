@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Achieving Perfect Score in Google PageSpeed Insights"
+title: "Achieving a Perfect Score in Google PageSpeed Insights"
 date: 2017-02-16 22:00:00 -0500
 categories: general
 tags: [jekyll, github pages, performance, google] 
