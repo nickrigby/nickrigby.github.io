@@ -8,7 +8,7 @@ categories: general
 Late last year I went to make some updates to my personal website, and got the shock of my life. My simple, modest website had been replaced with something that looked like a Microsoft Frontpage template. At first I thought I'd been hacked, but then my worst fear was confirmed — I had failed to renew my domain, and someone else had swooped.
 
 ## #WTF
-How did I forget to renew it? I simply didn't realize it needed renewing. As far as I can tell, I receieved no reminders through the registrar, so it just never occured to me. I definitely take the blame, but it was hard mistake to stomach that the domain I had owned and used for the last 15 years was gone. Not gone, but it simply wasn't mine any longer. It was now in the hands of an imposter — a new, slightly better looking "Nick Rigby" from Australia. Or at least that's what I thought...
+How did I forget to renew it? I simply didn't realize it needed renewing. As far as I can tell, I receieved no reminders through the registrar, so it just never occurred to me. I definitely take the blame, but it was hard mistake to stomach that the domain I had owned and used for the last 15 years was gone. Not gone, but it simply wasn't mine any longer. It was now in the hands of an imposter — a new, slightly better looking "Nick Rigby" from Australia. Or at least that's what I thought...
 
 ## Who is Nick Rigby?
 Browsing through the site, I quickly realised that my new alter ego seemed a little skeptical. For a start, his about page shows that he's either too shy to post his own picture, or he's making cash on the side as a stock photography model. Secondly, the content has spam written all over it. Cha-ching! This thing is a search engine play!
