@@ -79,7 +79,7 @@ rm -R vendor_original
 We have a number of things to do here, before we can activate the release.
 
 #### Add `env.php` and `config.php` files
-These files live in the `app/etc` folder of Magento 2, and contain environment specific code. The `env.php` file includes your encryption key, backend URL and database credentials, wheras `config.php` file contains module information. These files shouldn't be versioned, since they are specific to an environment, so I created a shared folder on the server, and uploaded the production files so they could be copied on deployment.
+These files live in the `app/etc` folder of Magento 2, and contain environment specific code. The `env.php` file includes your encryption key, backend URL and database credentials, whereas `config.php` file contains module information. These files shouldn't be versioned, since they are specific to an environment, so I created a shared folder on the server, and uploaded the production files so they could be copied on deployment.
 
 {% highlight powershell linenos %}
 cp {% raw %}{{project}}{% endraw %}/shared/app/etc/env.php {% raw %}{{release}}{% endraw %}/app/etc/env.php
@@ -101,7 +101,7 @@ php bin/magento maintenance:disable
 {% endhighlight %}
 
  - **Line 1:** Nothing new here, we simply move into the folder for the code that is being deployed.
- - **Line 2:** Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. _Note:_ You'll see that I am specifiying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
+ - **Line 2:** Using the Magento CLI , we [generate all of the static content](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-static-view.html), which includes compilation of LESS files etc. _Note:_ You'll see that I am specifying two languages: en_US and en_GB. If you're using different languages, be sure to add theme here.
  - **Line 3:** Again, using the Magento CLI, we setup and [compile all Dependency Injections](http://devdocs.magento.com/guides/v2.0/config-guide/cli/config-cli-subcommands-compiler.html).
  - **Line 4:** Enable Maintenance mode. Whaaaaaaaaat!? I thought you said this was zero downtime? Okay, it really should be, but it is important to do this, and here's why. When you run the `setup:upgrade` command on line 5, Magento is going to update the `setup_module` table in the database. Since this deployment has not been activated yet, we have a moment where we could have a potential mismatch between the code and what is in this table, which could cause an error. Essentially, this step just gives us an extra safety net.
  - **Line 5:** Run the upgrade script to update any module schemas in the database.
