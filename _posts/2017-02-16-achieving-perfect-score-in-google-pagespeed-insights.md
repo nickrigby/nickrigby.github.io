@@ -40,12 +40,12 @@ WebFontConfig = {
 
 Here's an explanation of what's going on:
 
- - **Lines 2-4:** Because the fonts load asyncronously, there can be a brief flash of the fallback font before the custom font renders. This code checks to see if the custom font has been previously loaded in this session, and applies the class to the HTML element (which controls the custom font in the CSS), before the webfont script even runs.
+ - **Lines 2-4:** Because the fonts load asynchronously, there can be a brief flash of the fallback font before the custom font renders. This code checks to see if the custom font has been previously loaded in this session, and applies the class to the HTML element (which controls the custom font in the CSS), before the webfont script even runs.
  - **Line 6:** Start of the config object that will be passed to the Webfont script on line 16.
  - **Lines 7-9:** Specify which fonts to load. You can load fonts from Typekit, Google, Fonts.com, custom and more.
  - **Line 10:** Specifies a maximum time of 2 seconds for the fonts to load, otherwise the fallback fonts are used.
  - **Lines 11-13:** Creates the session storage variable that we check for on line 2.
- - **Line 16:** Asyncronously load the WebFont Loader library.
+ - **Line 16:** Asynchronously load the WebFont Loader library.
 
 Next, the CSS:
 

@@ -13,7 +13,7 @@ Browse to your repository on Github, and go to the "settings" tab. Scroll about 
 
 Add your custom domain to the box and hit save. We're Done!
 
-_Note:_ Github will automatically create a new file in your repository called `CNAME` which includes a single line contianing your custom domain.
+_Note:_ Github will automatically create a new file in your repository called `CNAME` which includes a single line containing your custom domain.
  
 ## Configuring DNS
 We've told Github Pages about our custom domain, but now we need to configure the DNS so it points to our Github Pages site. Github Pages, rather conveniently, offers a [number of different ways to configure the DNS](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). I'm going to continue with the [A record method](https://help.github.com/articles/setting-up-an-apex-domain/).

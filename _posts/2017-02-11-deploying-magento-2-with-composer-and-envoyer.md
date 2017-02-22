@@ -31,7 +31,7 @@ RewriteRule (.*) /current/$1 [L]
 In order to use Envoyer, your code must first be versioned with GIT, with a remote repository through [Bitbucket](http://bitbucket.org/), [GitHub](https://github.com) or [GitLab](https://gitlab.com). I happen to be using BitBucket, but it really doesn't matter since Envoyer gives you an easy interface to connect any one of them.
 
 ## Server Access
-Envoyer pulls code directly from your connected repository onto your server, so you'll need to grant server access via a SSH key. My site is hosted with the fine folks at [Crucial Hosting](http://crucialhosting.com/) (which uses cPanel), so creating SSH access was a breeze. Once you have server access set up, Evoyer gives you the green light (literally!) in their interface so you know that everything is good to go.
+Envoyer pulls code directly from your connected repository onto your server, so you'll need to grant server access via a SSH key. My site is hosted with the fine folks at [Crucial Hosting](http://crucialhosting.com/) (which uses cPanel), so creating SSH access was a breeze. Once you have server access set up, Envoyer gives you the green light (literally!) in their interface so you know that everything is good to go.
 
 ## Deployment Hooks
 This is where the magic happens! Envoyer gives you the ability to run deployment hooks before and after various stages of the deployment process, which are:
@@ -66,7 +66,7 @@ mv vendor vendor_original
 
 _Note_: the `{% raw %}{{release}}{% endraw %}` placeholder on line 1. This is a smart variable in Envoyer that gives the path to the current release that is being deployed. Pretty sweet!
 
-### 2. Install Composer Depencendies (After)
+### 2. Install Composer Dependencies (After)
 Little bit of cleanup to do here: Move the `.htaccess` folder from `vendor_original` into the newly created `vendor` folder:
 
 {% highlight powershell linenos %}
