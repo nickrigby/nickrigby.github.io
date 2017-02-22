@@ -41,7 +41,7 @@ url: "http://yourdomain.com"
 Push your changes to Github and you should now see your Github Pages site at your domain. Bam!
 
 ## Bonus level: Enabling SSL
-If you want to use SSL with your domain – which is highly recomended – read on. Github Pages do not support SSL with custom domains, but there is a way — [Cloudflare](https://www.cloudflare.com). I won't go into detail about what Cloudflare does, all you need to know is it allows you to use SSL with your Github Pages domain — for free.
+If you want to use SSL with your domain – which is highly recommended – read on. Github Pages do not support SSL with custom domains, but there is a way — [Cloudflare](https://www.cloudflare.com). I won't go into detail about what Cloudflare does, all you need to know is it allows you to use SSL with your Github Pages domain — for free.
 
  1. Sign up for a Cloudflare account (if you don't already have one).
  2. Enter your domain name to initiate a scan of the DNS records.
