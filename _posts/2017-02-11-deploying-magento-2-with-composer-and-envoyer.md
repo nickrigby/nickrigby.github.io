@@ -16,15 +16,15 @@ Being a huge fan of [Laravel](https://laravel.com), I found [Envoyer](https://en
 ## Zero downtime deployments with Envoyer
 So firstly, a quick overview of how Envoyer handles zero downtime deployments. On the face of it, it's actually quite simple — symlinks. Each time you deploy code with Envoyer, it creates a new folder on the server in a "releases" folder. The name of the folder is timestamped with the time of the deployment to keep it unique e.g. `releases/20170128235240`. Once a deployment is successful, Envoyer creates a "current" folder symlink to that newly created releases folder.
 
-In order for everything to work, you'll need to set the document root on your server to point to this current folder.
+In order for everything to work, you'll need to set the document root on your server to point to this current folder. For security reasons, Magento also recommends pointing your document root to the `pub` folder, so your document root should be `current/pub`.
 
 _Note:_ If you're using cPanel (like me), cPanel doesn't like the document root to be changed. To get around this I simply created a `.htaccess` file at the server root, to rewrite the base URL as follows:
 {% highlight apache linenos %}
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^mydomain.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.mydomain.com$
-RewriteCond %{REQUEST_URI} !current/
-RewriteRule (.*) /current/$1 [L]
+RewriteCond %{REQUEST_URI} !current/pub/
+RewriteRule (.*) /current/pub/ $1 [L]
 {% endhighlight %}
 
 ## GIT Repository
