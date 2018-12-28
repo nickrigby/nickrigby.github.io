@@ -17,7 +17,7 @@ $brand-color: #000;
 $accent-color: #ffe700;
 
 $grey-color: #828282;
-$grey-color-light: lighten($grey-color, 40%);
+$grey-color-light: lighten($grey-color, 30%);
 $grey-color-dark: darken($grey-color, 25%);
 
 // Width of the content area
@@ -73,29 +73,36 @@ a {
     border: 0;
 
     &:hover {
-      background: none;
+      background-color: none;
     }
   }
 }
 
 .site-title,
-.site-nav  {
+.site-nav {
   font-family: $secondary-font-family;
+}
+
+.site-title {
+  background-image: linear-gradient(
+    120deg,
+    $accent-color 0%,
+    $accent-color 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.6rem;
+  background-position: 0 70%;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: transparent;
+  }
 }
 
 .post-list {
   h2 {
-    display: inline-block;
     margin-bottom: 5px;
     font-family: $secondary-font-family;
-    background-image: linear-gradient(
-      120deg,
-      $accent-color 0%,
-      $accent-color 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 0.6rem;
-    background-position: 0 80%;
 
     a {
       &:hover {
