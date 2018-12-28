@@ -1,0 +1,15 @@
+{
+  "name": "nickrigby",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nickrigby/nickrigby.github.io.git",
+  "author": "Nick Rigby <nick.rigby@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lighthouse": "^1.5.1"
+  },
+  "scripts": {
+    "lighthouse": "lighthouse https://nickrigby.uk",
+    "serve": "bundle exec jekyll serve --config _config.yml,_config-dev.yml"
+  }
+}
